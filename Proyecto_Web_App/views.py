@@ -9,12 +9,6 @@ def home(request):
     return render(request, "Proyecto_Web_App/home.html")
 
 
-def servicios(request):
-    "A view that shows all app services"
-    servicios = Servicio.objects.all()
-
-    return render(request, "Proyecto_Web_App/servicios.html", {"servicios": servicios})
-
 def tienda(request):
 
     return render(request, "Proyecto_Web_App/tienda.html")
