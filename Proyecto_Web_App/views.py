@@ -10,10 +10,5 @@ def home(request):
 
 
 def tienda(request):
-
+    """A view that render 'tienda' web page."""
     return render(request, "Proyecto_Web_App/tienda.html")
-
-
-def contacto(request):
-
-    return render(request, "Proyecto_Web_App/contacto.html")
