@@ -1,15 +1,24 @@
 {% extends "Proyecto_Web_App/base.html" %}
-
 {% load static %}
 {% block content %}
 
 <div class="contenedorFormulario">
+    
+    <!-- Ejemplo para comentar: -->
+    {% if "valido" in request.GET %} 
+    <p style="color: white;"> Información enviada correctamente, gracias.</p>
+      
+    {% endif %}
     
     <form action="" method="POST" style="text-align: center;">
         {% csrf_token %}
         <table style="color: white; margin: 20px auto;">{{miFormulario.as_table}}</table>
         <input type="submit" value="Enviar" style="width: 150px;">
     </form>
-</div>
 
+
+    <!-- Link directo -->
+    <!-- <a href="mailto:ve.soto.le@gmail.com">Envíame un correo</a> -->
+
+</div>
 {% endblock %}
