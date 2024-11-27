@@ -1,7 +1,19 @@
 {% extends "Proyecto_Web_App/base.html" %}
-
 {% load static %}
-
 {% block content %}
-<div><p style="color: white;">Estamos en la app de la tienda.</p> </div>
+<div class="container">
+  <div class="row">
+    {% for producto in productos %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%; margin: 7px 7px;">
+          <img src="{{producto.imagen.url}}" class="card-img-top">
+          <div class="card-body" style="text-align: center;">
+            <h7 class="card-title">{{producto.nombre}} </h7>
+            <p class="card-text">{{producto.precio}} &nbsp;Bs</p>
+          </div>
+        </div> <!--close label class'card'-->
+      </div> <!--close label class'col'-->
+    {% endfor %}
+  </div> <!--close label class 'row'-->
+</div> <!--close label class 'container'-->
 {% endblock %}
