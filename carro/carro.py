@@ -19,5 +19,37 @@ class Carro():
                 "precio":str(producto.precio),
                 "cantidad":1,
                 "imagen":producto.imagen.url,
-                }
-            
+            }
+        else:
+            for key, value in self.carro.items():
+                if key==str(producto.id):
+                    value["cantidad"]=value["cantidad"]+1
+                    break
+        self.guardar_carro()
+
+    def guardar_carro(self):
+        """Upgrades the session"""
+        self.session["carro"]=self.carro
+        self.session.modified=True
+
+    def eliminar(self, producto):
+        """Delete all product's items."""
+        producto.id=str(producto.id)
+        if producto.id in self.carro:
+            del self.carro[producto.id]
+            self.guardar_carro()
+    
+    def restar_producto(self, producto):
+        """Decrease product's items of the shopping cart."""
+        for key, value in self.carro.items():
+            if key==str(producto.id):
+                value["cantidad"]=value["cantidad"]-1
+                if value["cantidad"]<1:
+                    self.eliminar(producto)
+                break
+        self.guardar_carro()
+    
+    def vaciar_carro(self, producto):
+        """Empty the shopping cart."""
+        self.session["carro"]={}
+        self.session.modified=True
