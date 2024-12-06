@@ -7,8 +7,8 @@ class Carro():
         carro=self.session.get("carro")
         if not carro:
             carro=self.session["carro"]={}
-        else:
-            self.carro=carro
+        #else:
+        self.carro=carro
     
     def agregar(self, producto):
         """Add products to shopping cart."""
@@ -24,6 +24,7 @@ class Carro():
             for key, value in self.carro.items():
                 if key==str(producto.id):
                     value["cantidad"]=value["cantidad"]+1
+                    value["precio"]=float(value["precio"])+producto.precio
                     break
         self.guardar_carro()
 
@@ -39,17 +40,18 @@ class Carro():
             del self.carro[producto.id]
             self.guardar_carro()
     
-    def restar_producto(self, producto):
+    def restar(self, producto):
         """Decrease product's items of the shopping cart."""
         for key, value in self.carro.items():
             if key==str(producto.id):
                 value["cantidad"]=value["cantidad"]-1
+                value["precio"]=float(value["precio"])-producto.precio
                 if value["cantidad"]<1:
                     self.eliminar(producto)
                 break
         self.guardar_carro()
     
-    def vaciar_carro(self, producto):
+    def vaciar_carro(self):
         """Empty the shopping cart."""
         self.session["carro"]={}
         self.session.modified=True
