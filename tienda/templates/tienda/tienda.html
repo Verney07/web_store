@@ -4,9 +4,19 @@
 <div class="container">
 
   <div style="float:right;">
+    {% if request.user.is_authenticated %}
 
-    {% include "carro/widget.html" %}
+      {% include "carro/widget.html" %}
+  
+    {% else %}
 
+      <div class="alert alert-danger text-center">
+
+        Inicia sesión para el carro de compra
+
+      </div>
+    
+    {% endif %}
   </div>
 
   <div class="row">
