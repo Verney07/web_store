@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
-class TiendaConfig(AppConfig):
+
+class PedidosConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'tienda'
+    name = 'pedidos'

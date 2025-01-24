@@ -33,5 +33,7 @@ urlpatterns = [
 
     path('autenticacion/', include('autenticacion.urls'),),
 
+    path('pedidos/', include('pedidos.urls'),),
+
     path('', include('Proyecto_Web_App.urls')),
 ]
